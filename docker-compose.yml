@@ -8,16 +8,19 @@ services:
   volumes:
    - ./mysql_data:/var/lib/mysql
    - ./data/simple-docker-php.sql:/docker-entrypoint-initdb.d/simple-docker-php.sql
-  environment:
-   MYSQL_ROOT_PASSWORD: 12345
-   MYSQL_DATABASE: simple_db
-   MYSQL_USER: user
-   MYSQL_PASSWORD: password
+  env_file:
+   - ./etc/mysql/users.env
+   - ./etc/mysql/root_user.env
+   - ./etc/mysql/db.env
  app:
   image: alexeychusta/simple-php-app
   container_name: app
+  env_file:
+   - ./etc/mysql/users.env
+   - ./etc/mysql/db.env
   ports:
    - 8080:80
+
   restart: always
   depends_on:
    - db

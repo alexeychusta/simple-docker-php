@@ -8,7 +8,7 @@ CREATE TABLE Products
     ProductCount INT DEFAULT 0,
     Price DECIMAL NOT NULL
 );
-
+INSERT INTO Products (ProductName, Manufacturer, ProductCount, Price) VALUES
 ('iPhone Xs', 'Apple', 15, 96000),
 ('Nokia 9', 'HDM Global',4, 41000),
 ('Galaxy S9', 'Samsung',3, 63000),
