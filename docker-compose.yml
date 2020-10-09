@@ -13,7 +13,7 @@ services:
    - ./etc/mysql/root_user.env
    - ./etc/mysql/db.env
  app:
-  image: alexeychusta/simple-php-app
+  image: alexeychusta/simple-php-app:${TAG}
   container_name: app
   env_file:
    - ./etc/mysql/users.env
