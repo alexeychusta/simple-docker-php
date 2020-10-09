@@ -18,9 +18,10 @@ services:
   env_file:
    - ./etc/mysql/users.env
    - ./etc/mysql/db.env
+  environment:
+   - MYSQL_HOST:db
   ports:
    - 8080:80
-
   restart: always
   depends_on:
    - db
