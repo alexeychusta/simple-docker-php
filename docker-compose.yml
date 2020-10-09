@@ -14,11 +14,21 @@ services:
    MYSQL_USER: user
    MYSQL_PASSWORD: password
  app:
-  image: alexeychusta/simple-php
-  container_name: application
+  image: alexeychusta/simple-php-app
+  container_name: app
   ports:
    - 8080:80
   restart: always
   depends_on:
    - db
+ nginx:
+  image: nginx:1.19.3-alpine
+  container_name: nginx
+  volumes:
+   - ./etc/nginx/default.conf:/etc/nginx/conf.d/default.conf
+  ports:
+   - 80:80
+  depends_on:
+   - app
+
 
